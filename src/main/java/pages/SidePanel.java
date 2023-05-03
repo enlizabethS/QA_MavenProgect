@@ -1,6 +1,5 @@
 package pages;
 
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,6 +8,8 @@ import pages.alertsFrameWindows.WindowsPage;
 import pages.bookstore.BookStorePage;
 import pages.bookstore.LoginPage;
 import pages.bookstore.ProfilePage;
+import pages.elements.BrokenLinksImages;
+import pages.elements.LinksPage;
 import pages.interactions.DroppablePage;
 import pages.widgets.SelectMenuPage;
 
@@ -65,5 +66,17 @@ public class SidePanel extends BasePage {
     public JSExecutor selectTextBox() {
         click(textBox);
         return new JSExecutor(driver);
+    }
+    @FindBy(xpath = "//span[.='Links']")
+    WebElement links;
+    public LinksPage selectLinks() {
+        clickWithJSExecutor(links,0,400);
+        return new LinksPage(driver);
+    }
+    @FindBy(xpath = "//span[.='Broken Links - Images']")
+    WebElement brokenLinksImages;
+    public BrokenLinksImages selectBrokenLinks() {
+        clickWithJSExecutor(brokenLinksImages,0,400);
+        return new BrokenLinksImages(driver);
     }
 }
